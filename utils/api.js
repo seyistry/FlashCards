@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const FLASHCARDS_STORAGE_KEY = "FlashCards:Udacity";
 
-const data = {
+export const data = {
     React: {
         title: "React",
         questions: [

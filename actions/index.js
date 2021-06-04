@@ -5,6 +5,14 @@ export const CREATE_DECK = "CREATE_DECK";
 export const DELETE_DECK = "DELETE_DECK";
 export const ADD_CARD = "ADD_CARD";
 
+export function handleInitialData() {
+    return (dispatch) => {
+        return getDeck().then((decks) => {
+            dispatch(receiveDecks(decks));
+        });
+    };
+}
+
 function receiveDecks(decks) {
     return {
         type: RECEIVE_DECKS,
@@ -12,13 +20,7 @@ function receiveDecks(decks) {
     };
 }
 
-export function handleInitialData() {
-    return (dispatch) => {
-        return getDecks().then((decks) => {
-            dispatch(receiveDecks(decks));
-        });
-    };
-}
+
 
 export function addDeck(title) {
     return {

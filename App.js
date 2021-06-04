@@ -1,8 +1,10 @@
 import React from "react";
 import { View, Platform, Text, StatusBar, SafeAreaView } from "react-native";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
+import thunk from "redux-thunk";
+import logger from "./middleware/logger";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { purple, white, lightPurp } from "./utils/colors";
@@ -90,10 +92,12 @@ function MainNavigator() {
     );
 }
 
+const store = createStore(reducer, applyMiddleware(thunk, logger)); 
+
 export default class App extends React.Component {
     render() {
         return (
-            <Provider store={createStore(reducer)}>
+            <Provider store={store}>
                 <FlashCardStatusBar backgroundColor={purple} style="light" />
                 <MainNavigator />
             </Provider>
