@@ -23,7 +23,8 @@ export class DeckList extends Component {
                         key={title}
                         onPress={() =>
                             this.props.navigation.navigate("Deck", {
-                                DeckId: title,
+                                title: title,
+                                questions: data[title].questions,
                             })
                         }
                     >
