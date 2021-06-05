@@ -40,9 +40,8 @@ export class Deck extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() =>
-                        this.props.navigation.navigate("Start Quiz", {
+                        this.props.navigation.navigate("Quiz", {
                             title: title,
-                            questions: questions,
                         })
                     }
                 >
