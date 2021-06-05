@@ -2,18 +2,18 @@ import React from "react";
 import { View, Platform, Text, StatusBar, SafeAreaView } from "react-native";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import reducer from "./reducers";
+import reducer from "../reducers";
 import thunk from "redux-thunk";
-import logger from "./middleware/logger";
+import logger from "../middleware/logger";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { purple, white, lightPurp } from "./utils/colors";
+import { purple, white, lightPurp } from "../utils/colors";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { createStackNavigator } from "@react-navigation/stack";
-import DeckList from './components/DeckList.js'
-import AddDeck from './components/AddDeck'
-import Decks from './components/Decks.js'
+import DeckList from './DeckList'
+import AddDeck from './AddDeck'
+import Deck from './Deck'
 
 function FlashCardStatusBar ({ backgroundColor, ...props }) {
     return (
@@ -80,8 +80,8 @@ function MainNavigator() {
                     options={{ headerShown: false }}
                 />
                 <Stack.Screen
-                    name="Add Deck"
-                    component={AddDeck}
+                    name="Deck"
+                    component={Deck}
                     options={{
                         headerTintColor: "white",
                         headerStyle: { backgroundColor: purple },
