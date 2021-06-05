@@ -14,6 +14,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import DeckList from './DeckList'
 import AddDeck from './AddDeck'
 import Deck from './Deck'
+import AddCard from "./AddCard";
+import StartQuiz from "./StartQuiz";
+import Result from "./Result";
 
 function FlashCardStatusBar ({ backgroundColor, ...props }) {
     return (
@@ -82,6 +85,30 @@ function MainNavigator() {
                 <Stack.Screen
                     name="Deck"
                     component={Deck}
+                    options={{
+                        headerTintColor: "white",
+                        headerStyle: { backgroundColor: purple },
+                    }}
+                />
+                <Stack.Screen
+                    name="Add Card"
+                    component={AddCard}
+                    options={{
+                        headerTintColor: "white",
+                        headerStyle: { backgroundColor: purple },
+                    }}
+                />
+                <Stack.Screen
+                    name="Start Quiz"
+                    component={StartQuiz}
+                    options={{
+                        headerTintColor: "white",
+                        headerStyle: { backgroundColor: purple },
+                    }}
+                />
+                <Stack.Screen
+                    name="Result"
+                    component={Result}
                     options={{
                         headerTintColor: "white",
                         headerStyle: { backgroundColor: purple },
