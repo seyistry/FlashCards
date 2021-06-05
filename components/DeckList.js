@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import { ScrollView, View, StyleSheet, Text } from "react-native";
+import {
+    ScrollView,
+    View,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+} from "react-native";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/index";
-import Decks from './Decks'
+import DeckStats from "./DeckStats";
 
 export class DeckList extends Component {
-    componentDidMount () {
+    componentDidMount() {
         this.props.handleInitialData();
     }
     render() {
@@ -13,7 +19,19 @@ export class DeckList extends Component {
         return (
             <ScrollView>
                 {Object.keys(data).map((title) => (
-                    <Decks title={title} key={title} questions={data[title].questions} />
+                    <TouchableOpacity
+                        key={title}
+                        onPress={() =>
+                            this.props.navigation.navigate("Deck", {
+                                DeckId: title,
+                            })
+                        }
+                    >
+                        <DeckStats
+                            title={title}
+                            questions={data[title].questions}
+                        />
+                    </TouchableOpacity>
                 ))}
             </ScrollView>
         );
