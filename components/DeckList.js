@@ -24,7 +24,7 @@ export class DeckList extends Component {
                         onPress={() =>
                             this.props.navigation.navigate("Deck", {
                                 title: title,
-                                questions: data[title].questions,
+                                questions: data[title].questions.length,
                             })
                         }
                     >

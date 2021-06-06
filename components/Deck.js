@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
 import { View, Text, TouchableOpacity } from "react-native";
+import { deleteDeck } from "../actions";
 
 export class Deck extends Component {
     setTitle = (title) => {
@@ -11,8 +12,9 @@ export class Deck extends Component {
         });
     };
 
-    deleteDeck = () => {
-        console.log("Deck Deleted");
+    removeDeck = (title) => {
+        this.props.dispatch(deleteDeck(title));
+        this.props.navigation.navigate("Home");
     };
 
     componentDidMount() {
@@ -22,17 +24,19 @@ export class Deck extends Component {
     }
 
     render() {
-        const { title} = this.props.route.params;
+        const { title,questions } = this.props.route.params;
         const { decks } = this.props;
-        console.log(decks)
+        const deckLength = questions;
+        console.log(deckLength)
         return (
             <View>
                 <Text>{title}</Text>
-                <Text>{`${decks[title].questions.length} Card`}</Text>
+                <Text>{`${deckLength} Card`}</Text>
                 <TouchableOpacity
                     onPress={() =>
                         this.props.navigation.navigate("Add Card", {
                             title: title,
+                            questions
                         })
                     }
                 >
@@ -47,7 +51,7 @@ export class Deck extends Component {
                 >
                     <Text>Start Quiz</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={this.deleteDeck}>
+                <TouchableOpacity onPress={() => this.removeDeck(title)}>
                     <Text>Delete Deck</Text>
                 </TouchableOpacity>
             </View>

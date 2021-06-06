@@ -10,19 +10,20 @@ import {
     Button,
     Alert,
 } from "react-native";
-import {addCard} from '../actions/'
+import { addCard } from "../actions/";
 
 const AddCard = (props) => {
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
-    const {title} = props.route.params
+    const { title, questions } = props.route.params;
     // const { dispatch } = this.props;
     const handleSubmit = () => {
         // console.log(title)
-        props.dispatch(addCard(title, [{question, answer}]));
+        props.dispatch(addCard(title, [{ question, answer }]));
         props.navigation.navigate("Deck", {
             title: title,
-        })
+            questions: questions + 1,
+        });
     };
 
     return (
@@ -41,13 +42,12 @@ const AddCard = (props) => {
             />
             <Button
                 title="Add Card"
-                disabled = {answer === "" || question === ""}
+                disabled={answer === "" || question === ""}
                 onPress={() => handleSubmit()}
             />
         </SafeAreaView>
     );
 };
-
 
 // export class AddCards extends Component {
 //     State = {
@@ -68,8 +68,6 @@ const AddCard = (props) => {
 //             answer: text,
 //         }));
 //     };
-
-    
 
 //     render() {
 //         const { title } = this.props.route.params;
