@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View, Text, TouchableOpacity } from "react-native";
 import { deleteDeck } from "../actions";
+import { removeDeck } from "../utils/api";
 
 export class Deck extends Component {
     setTitle = (title) => {
@@ -14,6 +15,7 @@ export class Deck extends Component {
 
     removeDeck = (title) => {
         this.props.dispatch(deleteDeck(title));
+        removeDeck(title);
         this.props.navigation.navigate("Home");
     };
 

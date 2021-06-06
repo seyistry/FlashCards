@@ -27,7 +27,7 @@ export const data = {
     },
 };
 
-export async function getDeck() {
+export async function getDecks() {
     try {
         const stored_data = await AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY);
 
@@ -64,6 +64,15 @@ export async function removeDeck(key) {
         decks[key] = undefined;
         delete decks[key];
         AsyncStorage.setItem(FLASHCARDS_STORAGE_KEY, JSON.stringify(decks));
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export async function getDeck(deckId) {
+    try {
+        const jsonValue = await AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY);
+        return JSON.parse(jsonValue)[deckId];
     } catch (e) {
         console.log(e);
     }

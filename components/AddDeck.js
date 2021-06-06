@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { addDeck } from "../actions/index";
+import { saveDeckTitle } from "../utils/api";
 
 export const AddDeck = (props) => {
     const [value, setValue] = useState("");
@@ -16,7 +17,7 @@ export const AddDeck = (props) => {
 
     const createDeck = () => {
         props.addDeck(value);
-
+        saveDeckTitle(value);
         navigation.navigate("Deck", {
             title: value,
             questions: 0,

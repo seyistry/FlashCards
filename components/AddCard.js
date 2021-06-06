@@ -11,6 +11,7 @@ import {
     Alert,
 } from "react-native";
 import { addCard } from "../actions/";
+import { addCardToDeck } from "../utils/api";
 
 const AddCard = (props) => {
     const [question, setQuestion] = useState("");
@@ -19,7 +20,8 @@ const AddCard = (props) => {
     // const { dispatch } = this.props;
     const handleSubmit = () => {
         // console.log(title)
-        props.dispatch(addCard(title, [{ question, answer }]));
+        props.dispatch(addCard(title, { question, answer }));
+        addCardToDeck(title, { question, answer });
         props.navigation.navigate("Deck", {
             title: title,
             questions: questions + 1,

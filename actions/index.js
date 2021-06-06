@@ -1,4 +1,4 @@
-import { getDeck } from "../utils/api";
+import { getDecks } from "../utils/api";
 
 export const RECEIVE_DECKS = "RECEIVE-DECKS";
 export const CREATE_DECK = "CREATE_DECK";
@@ -7,7 +7,7 @@ export const ADD_CARD = "ADD_CARD";
 
 export function handleInitialData() {
     return (dispatch) => {
-        return getDeck().then((decks) => {
+        return getDecks().then((decks) => {
             dispatch(receiveDecks(decks));
         });
     };
