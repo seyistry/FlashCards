@@ -24,10 +24,9 @@ export class Deck extends Component {
     }
 
     render() {
-        const { title,questions } = this.props.route.params;
-        const { decks } = this.props;
+        const { title, questions } = this.props.route.params;
         const deckLength = questions;
-        console.log(deckLength)
+        console.log(deckLength);
         return (
             <View>
                 <Text>{title}</Text>
@@ -36,7 +35,7 @@ export class Deck extends Component {
                     onPress={() =>
                         this.props.navigation.navigate("Add Card", {
                             title: title,
-                            questions
+                            questions,
                         })
                     }
                 >
@@ -59,10 +58,4 @@ export class Deck extends Component {
     }
 }
 
-function mapStateToProps(decks) {
-    return {
-        decks,
-    };
-}
-
-export default connect(mapStateToProps)(Deck);
+export default connect()(Deck);

@@ -23,6 +23,7 @@ const Quiz = (props) => {
     const [showAnswer, setShowAnwser] = useState(false);
     const { questions } = props;
     const totalCount = questions.length;
+    const isEmpty = totalCount === 0 ? true : false;
 
     handleAnswer = (text) => {
         setIndex(index + 1);
@@ -46,60 +47,77 @@ const Quiz = (props) => {
 
     return (
         <View>
-            {index < totalCount ? (
-                showAnswer ? (
-                    <View>
-                        <Text>
-                            [{index + 1}/{totalCount}]
-                        </Text>
-                        <Text>Answer : {questions[index].answer}</Text>
-                        <Button
-                            title="Show Question"
-                            color="#7daed3"
-                            onPress={handleShowAnswer}
-                        >
-                            Show Question
-                        </Button>
-                        <SubmitBtn
-                            text="Correct"
-                            onPress={() => handleAnswer("correct")}
-                        />
-                        <SubmitBtn
-                            text="Incorrect"
-                            onPress={() => handleAnswer("incorrect")}
-                        />
-                    </View>
-                ) : (
-                    <View>
-                        <Text>
-                            [{index + 1}/{totalCount}]
-                        </Text>
-                        <Text>{questions[index].question}</Text>
-                        <Button
-                            title="Show Answer"
-                            color="#7daed3"
-                            onPress={handleShowAnswer}
-                        >
-                            Show Answer
-                        </Button>
-                        <SubmitBtn
-                            text="Correct"
-                            onPress={() => handleAnswer("correct")}
-                        />
-                        <SubmitBtn
-                            text="Incorrect"
-                            onPress={() => handleAnswer("incorrect")}
-                        />
-                    </View>
-                )
+            {isEmpty ? (
+                <View>
+                    <Text>
+                        Sorry! You can't start quiz before adding cards to the
+                        deck.
+                    </Text>
+                </View>
             ) : (
                 <View>
-                    <Text>You have scored</Text>
-                    <Text>
-                        {correct} out of {totalCount}
-                    </Text>
-                    <SubmitBtn text="Restart Quiz" onPress={handleRestart} />
-                    <SubmitBtn text="Back to Deck" onPress={goBackToDeck} />
+                    {index < totalCount ? (
+                        showAnswer ? (
+                            <View>
+                                <Text>
+                                    [{index + 1}/{totalCount}]
+                                </Text>
+                                <Text>Answer : {questions[index].answer}</Text>
+                                <Button
+                                    title="Show Question"
+                                    color="#7daed3"
+                                    onPress={handleShowAnswer}
+                                >
+                                    Show Question
+                                </Button>
+                                <SubmitBtn
+                                    text="Correct"
+                                    onPress={() => handleAnswer("correct")}
+                                />
+                                <SubmitBtn
+                                    text="Incorrect"
+                                    onPress={() => handleAnswer("incorrect")}
+                                />
+                            </View>
+                        ) : (
+                            <View>
+                                <Text>
+                                    [{index + 1}/{totalCount}]
+                                </Text>
+                                <Text>{questions[index].question}</Text>
+                                <Button
+                                    title="Show Answer"
+                                    color="#7daed3"
+                                    onPress={handleShowAnswer}
+                                >
+                                    Show Answer
+                                </Button>
+                                <SubmitBtn
+                                    text="Correct"
+                                    onPress={() => handleAnswer("correct")}
+                                />
+                                <SubmitBtn
+                                    text="Incorrect"
+                                    onPress={() => handleAnswer("incorrect")}
+                                />
+                            </View>
+                        )
+                    ) : (
+                        <View>
+                            <Text>You have scored</Text>
+                            <Text>
+                                {correct} out of {totalCount}
+                            </Text>
+                            <SubmitBtn
+                                text="Restart Quiz"
+                                onPress={handleRestart}
+                            />
+                            <SubmitBtn
+                                text="Back to Deck"
+                                onPress={goBackToDeck}
+                            />
+                        </View>
+                    )}
                 </View>
             )}
         </View>
@@ -113,7 +131,7 @@ function mapStateToProps(decks, { route }) {
     };
 }
 
-function mapDispatchToProps( dispatch ,{ navigation }) {
+function mapDispatchToProps(dispatch, { navigation }) {
     return {
         goBack: () => navigation.goBack(),
     };
