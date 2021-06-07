@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { View, Text, TouchableOpacity } from "react-native";
 import { deleteDeck } from "../actions";
 import { removeDeck } from "../utils/api";
+import { setLocalNotification } from "../utils/helpers";
 
 export class Deck extends Component {
     setTitle = (title) => {

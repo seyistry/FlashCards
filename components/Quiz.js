@@ -8,6 +8,7 @@ import {
     Button,
 } from "react-native";
 import { connect } from "react-redux";
+import Result from "./Result";
 
 function SubmitBtn({ text, onPress }) {
     return (
@@ -103,20 +104,13 @@ const Quiz = (props) => {
                             </View>
                         )
                     ) : (
-                        <View>
-                            <Text>You have scored</Text>
-                            <Text>
-                                {correct} out of {totalCount}
-                            </Text>
-                            <SubmitBtn
-                                text="Restart Quiz"
-                                onPress={handleRestart}
-                            />
-                            <SubmitBtn
-                                text="Back to Deck"
-                                onPress={goBackToDeck}
-                            />
-                        </View>
+                        <Result
+                            goBackToDeck={goBackToDeck}
+                            correct={correct}
+                            totalCount={totalCount}
+                            handleRestart={handleRestart}
+                            SubmitBtn={SubmitBtn}
+                        />
                     )}
                 </View>
             )}

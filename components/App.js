@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Platform, Text, StatusBar, SafeAreaView } from "react-native";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -11,14 +11,15 @@ import { purple, white, lightPurp } from "../utils/colors";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { createStackNavigator } from "@react-navigation/stack";
-import DeckList from './DeckList'
-import AddDeck from './AddDeck'
-import Deck from './Deck'
+import DeckList from "./DeckList";
+import AddDeck from "./AddDeck";
+import Deck from "./Deck";
 import AddCard from "./AddCard";
 import Quiz from "./Quiz";
+import { setLocalNotification } from "../utils/helpers";
 import Result from "./Result";
 
-function FlashCardStatusBar ({ backgroundColor, ...props }) {
+function FlashCardStatusBar({ backgroundColor, ...props }) {
     return (
         <SafeAreaView
             style={{ backgroundColor, height: Constants.statusBarHeight }}
@@ -119,15 +120,16 @@ function MainNavigator() {
     );
 }
 
-const store = createStore(reducer, applyMiddleware(thunk, logger)); 
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
-export default class App extends React.Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <FlashCardStatusBar backgroundColor={purple} style="light" />
-                <MainNavigator />
-            </Provider>
-        );
-    }
+export default function App() {
+    useEffect(() => {
+        setLocalNotification();
+    }, []);
+    return (
+        <Provider store={store}>
+            <FlashCardStatusBar backgroundColor={purple} style="light" />
+            <MainNavigator />
+        </Provider>
+    );
 }
