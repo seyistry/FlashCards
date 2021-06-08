@@ -38,10 +38,3 @@ This will open Expo Developer Tools in the browser.  You can then do one of the 
 ## Author
 
 - [@seyi Egunjobi](https://github.com/seyistry/)
-
-  
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
-  
