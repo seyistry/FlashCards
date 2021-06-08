@@ -9,6 +9,7 @@ import {
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/index";
 import DeckStats from "./DeckStats";
+import { gray, blue, yellow, orange } from "../utils/colors";
 
 export class DeckList extends Component {
     componentDidMount() {
@@ -17,7 +18,22 @@ export class DeckList extends Component {
     render() {
         const data = this.props.decks;
         return (
-            <ScrollView>
+            <ScrollView
+                style={{
+                    backgroundColor: gray,
+                }}
+            >
+                <Text
+                    style={{
+                        fontSize: 24,
+                        textAlign: "center",
+                        marginVertical: 20,
+                        color: blue,
+                        fontWeight: "bold"
+                    }}
+                >
+                    MASTER YOUR CARDS
+                </Text>
                 {Object.keys(data).map((title) => (
                     <TouchableOpacity
                         key={title}

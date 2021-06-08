@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { addCard } from "../actions/";
 import { addCardToDeck } from "../utils/api";
+import { blue, gray, white } from "../utils/colors";
 
 const AddCard = (props) => {
     const [question, setQuestion] = useState("");
@@ -29,86 +30,50 @@ const AddCard = (props) => {
     };
 
     return (
-        <SafeAreaView>
+        <SafeAreaView
+            style={{
+                flex: 1,
+                // justifyContent: "space-between",
+                backgroundColor: gray,
+            }}
+        >
             <TextInput
                 style={styles.input}
-                placeholder="Question"
+                placeholder="   Question"
                 onChangeText={(text) => setQuestion(text)}
                 // value={question}
             />
             <TextInput
                 style={styles.input}
-                placeholder="Answer"
+                placeholder="   Answer"
                 onChangeText={(text) => setAnswer(text)}
                 // value={answer}
             />
-            <Button
-                title="Add Card"
-                disabled={answer === "" || question === ""}
+            <TouchableOpacity
                 onPress={() => handleSubmit()}
-            />
+                style={styles.button}
+                disabled={answer === "" || question === ""}
+            >
+                <Text style={{ color: white, fontSize: 18 }}>Submit</Text>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 };
 
-// export class AddCards extends Component {
-//     State = {
-//         question: "yii",
-//         answer: "",
-//         toHome: false,
-//     };
-
-//     onChangeQuestion = (text) => {
-//         console.log(`Text Value: ${text}`);
-//         this.setState(() => ({
-//             question: text,
-//         }));
-//     };
-
-//     onChangeAnswer = (text) => {
-//         this.setState(() => ({
-//             answer: text,
-//         }));
-//     };
-
-//     render() {
-//         const { title } = this.props.route.params;
-//         const { toHome, question, answer } = this.State;
-//         console.log(`question Value: ${question}`);
-
-//         // if (toHome === true) {
-//         //     return <Redirect to="/" />;
-//         // }
-
-//         return (
-//             <SafeAreaView>
-//                 <TextInput
-//                     style={styles.input}
-//                     placeholder="Question"
-//                     onChangeText={this.onChangeQuestion}
-//                     // value={question}
-//                 />
-//                 <TextInput
-//                     style={styles.input}
-//                     placeholder="Answer"
-//                     onChange={this.onChangeAnswer}
-//                     // value={answer}
-//                 />
-//                 <Button
-//                     title="Submit"
-//                     disabled //={answer === "" || question === ""}
-//                     onPress={() => Alert.alert("Cannot press this one")}
-//                 />
-//             </SafeAreaView>
-//         );
-//     }
-// }
-
 const styles = StyleSheet.create({
     input: {
-        height: 40,
+        height: 50,
         margin: 12,
-        borderWidth: 1,
+        borderBottomWidth: 1,
+    },
+    button: {
+        backgroundColor: blue,
+        marginTop: 30,
+        marginHorizontal: "20%",
+        height: 50,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: Platform.OS === "ios" ? 16 : 2,
     },
 });
 

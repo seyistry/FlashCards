@@ -7,7 +7,8 @@ import thunk from "redux-thunk";
 import logger from "../middleware/logger";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { purple, white, lightPurp } from "../utils/colors";
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { blue, orange } from "../utils/colors";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -62,7 +63,7 @@ function Tabs() {
                 },
             })}
             tabBarOptions={{
-                activeTintColor: lightPurp,
+                activeTintColor: orange,
                 inactiveTintColor: "gray",
             }}
         >
@@ -88,7 +89,7 @@ function MainNavigator() {
                     component={Deck}
                     options={{
                         headerTintColor: "white",
-                        headerStyle: { backgroundColor: purple },
+                        headerStyle: { backgroundColor: blue },
                     }}
                 />
                 <Stack.Screen
@@ -96,7 +97,7 @@ function MainNavigator() {
                     component={AddCard}
                     options={{
                         headerTintColor: "white",
-                        headerStyle: { backgroundColor: purple },
+                        headerStyle: { backgroundColor: blue },
                     }}
                 />
                 <Stack.Screen
@@ -104,7 +105,7 @@ function MainNavigator() {
                     component={Quiz}
                     options={{
                         headerTintColor: "white",
-                        headerStyle: { backgroundColor: purple },
+                        headerStyle: { backgroundColor: blue },
                     }}
                 />
                 <Stack.Screen
@@ -112,7 +113,7 @@ function MainNavigator() {
                     component={Result}
                     options={{
                         headerTintColor: "white",
-                        headerStyle: { backgroundColor: purple },
+                        headerStyle: { backgroundColor: blue },
                     }}
                 />
             </Stack.Navigator>
@@ -128,7 +129,7 @@ export default function App() {
     }, []);
     return (
         <Provider store={store}>
-            <FlashCardStatusBar backgroundColor={purple} style="light" />
+            <FlashCardStatusBar backgroundColor={orange} style="light" />
             <MainNavigator />
         </Provider>
     );
