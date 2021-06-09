@@ -7,7 +7,6 @@ import thunk from "redux-thunk";
 import logger from "../middleware/logger";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { blue, orange } from "../utils/colors";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
