@@ -2,22 +2,22 @@ import React, { useEffect } from "react";
 import { View, Platform, Text, StatusBar, SafeAreaView } from "react-native";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import reducer from "../reducers";
+import reducer from "./reducers";
 import thunk from "redux-thunk";
-import logger from "../middleware/logger";
+import logger from "./middleware/logger";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { blue, orange } from "../utils/colors";
+import { blue, orange } from "./utils/colors";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { createStackNavigator } from "@react-navigation/stack";
-import DeckList from "./DeckList";
-import AddDeck from "./AddDeck";
-import Deck from "./Deck";
-import AddCard from "./AddCard";
-import Quiz from "./Quiz";
-import { setLocalNotification } from "../utils/helpers";
-import Result from "./Result";
+import DeckList from "./components/DeckList";
+import AddDeck from "./components/AddDeck";
+import Deck from "./components/Deck";
+import AddCard from "./components/AddCard";
+import Quiz from "./components/Quiz";
+import { setLocalNotification } from "./utils/helpers";
+import Result from "./components/Result";
 
 function FlashCardStatusBar({ backgroundColor, ...props }) {
     return (

@@ -3,7 +3,7 @@
   "displayName": "FlashCards",
   "expo": {
     "name": "FlashCards",
-    "slug": "FlashCards",
+    "slug": "mobile-flash-card",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
