@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Platform } from "react-native";
 import { orange, gray, blue, green, yellow, white } from "../utils/colors";
 
 export class DeckStats extends Component {

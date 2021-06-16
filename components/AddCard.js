@@ -7,8 +7,7 @@ import {
     SafeAreaView,
     StyleSheet,
     TextInput,
-    Button,
-    Alert,
+    Platform,
 } from "react-native";
 import { addCard } from "../actions/";
 import { addCardToDeck } from "../utils/api";

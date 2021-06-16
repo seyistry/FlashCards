@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    StyleSheet,
+    Platform,
+} from "react-native";
 import { deleteDeck } from "../actions";
 import { removeDeck } from "../utils/api";
 import { blue, gray, orange, red } from "../utils/colors";
@@ -96,7 +102,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "space-evenly",
-        backgroundColor: gray ,
+        backgroundColor: gray,
     },
     titleContainer: {
         // alignItems: "center",
@@ -109,7 +115,7 @@ const styles = StyleSheet.create({
         fontSize: 40,
         textAlign: "center",
         color: blue,
-        textTransform: 'uppercase',
+        textTransform: "uppercase",
     },
     titleBase: {
         fontSize: 18,

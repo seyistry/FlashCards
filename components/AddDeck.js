@@ -6,6 +6,7 @@ import {
     StyleSheet,
     TextInput,
     TouchableOpacity,
+    Platform,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { addDeck } from "../actions/index";
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
         color: blue,
     },
     input: {
-        marginTop: 30,
+        marginTop: 50,
         marginHorizontal: 12,
         borderBottomWidth: 1,
     },
