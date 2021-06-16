@@ -6,7 +6,8 @@ Mobile Flashcards is a React Native app for iOS and Android that allows users to
 It uses React Native, Expo, Redux, & React Navigation.
 
 This app is the third of three projects required for [Udacity's React Nanodegree program](https://www.udacity.com/course/react-nanodegree--nd019).
-Scan the QR Code using the Expo Client app ([Preview App](https://exp://exp.host/@seyistry/FlashCards))
+
+Scan the QR Code using the Expo Client app to ([Preview App](https://exp://exp.host/@seyistry/FlashCards))
 
 ## Installation 
 
