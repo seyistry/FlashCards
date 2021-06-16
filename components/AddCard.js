@@ -49,13 +49,15 @@ const AddCard = (props) => {
                 onChangeText={(text) => setAnswer(text)}
                 // value={answer}
             />
-            <TouchableOpacity
-                onPress={() => handleSubmit()}
-                style={styles.button}
-                disabled={answer === "" || question === ""}
-            >
-                <Text style={{ color: white, fontSize: 18 }}>Submit</Text>
-            </TouchableOpacity>
+            <View style={{flex: 1, justifyContent: 'flex-end'}}>
+                <TouchableOpacity
+                    onPress={() => handleSubmit()}
+                    style={[styles.button]}
+                    disabled={answer === "" || question === ""}
+                >
+                    <Text style={{ color: white, fontSize: 18 }}>Submit</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 };
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: blue,
-        marginTop: 30,
+        marginBottom: 30,
         marginHorizontal: "20%",
         height: 50,
         justifyContent: "center",

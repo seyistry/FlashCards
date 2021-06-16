@@ -26,7 +26,7 @@ export const AddDeck = (props) => {
         setValue("");
     };
     return (
-        <View styles={styles.container}>
+        <View style={styles.container}>
             <Text style={styles.title}>
                 What is the title of your new deck?
             </Text>
@@ -38,13 +38,15 @@ export const AddDeck = (props) => {
                 placeholder="Deck Title"
                 clearButtonMode="always"
             />
-            <TouchableOpacity
-                disabled={value === ""}
-                onPress={createDeck}
-                style={styles.buttonContainer}
-            >
-                <Text style={styles.button}>Submit</Text>
-            </TouchableOpacity>
+            <View style={{flex: 1, justifyContent: 'flex-end'}}>
+                <TouchableOpacity
+                    disabled={value === ""}
+                    onPress={createDeck}
+                    style={styles.buttonContainer}
+                >
+                    <Text style={styles.button}>Submit</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 28,
         textAlign: "center",
-        marginTop: 40,
+        marginTop: 30,
         marginHorizontal: 20,
         color: blue,
     },
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
     },
     buttonContainer: {
-        marginTop: 30,
+        marginBottom: 30,
         height: 40,
         marginHorizontal: "20%",
         justifyContent: "center",
