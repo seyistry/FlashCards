@@ -1,17 +1,42 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Platform } from "react-native";
+import { View, Text, StyleSheet, Platform, Animated } from "react-native";
 import { orange, gray, blue, green, yellow, white } from "../utils/colors";
 
 export class DeckStats extends Component {
+    state = {
+        opacity: new Animated.Value(0),
+        setHeight: new Animated.Value(0),
+        width: new Animated.Value(0),
+    };
+
+    componentDidMount() {
+        const { opacity, setHeight } = this.state;
+        Animated.timing(opacity, {
+            toValue: 1,
+            duration: 1000,
+            useNativeDriver: true,
+        }).start();
+        Animated.spring(setHeight, {
+            toValue: 1,
+            speed: 9,
+            useNativeDriver: true,
+        }).start();
+    }
     render() {
         const { title, questions } = this.props;
+        const { opacity, setHeight } = this.state;
         return (
-            <View style={[styles.container, { backgroundColor: blue }]}>
+            <Animated.View
+                style={[
+                    styles.container,
+                    { backgroundColor: blue, opacity, transform:  [{ scale: setHeight }] },
+                ]}
+            >
                 <View style={{ justifyContent: "flex-end" }}>
                     <Text style={styles.textTitle}>{title}</Text>
                     <Text style={styles.textBase}>{questions.length} Card</Text>
                 </View>
-            </View>
+            </Animated.View>
         );
     }
 }
