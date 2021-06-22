@@ -8,7 +8,7 @@ import logger from "./middleware/logger";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { blue, orange } from "./utils/colors";
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { FontAwesome, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { createStackNavigator } from "@react-navigation/stack";
 import DeckList from "./components/DeckList";
@@ -44,7 +44,9 @@ function Tabs() {
                         return (
                             <Ionicons
                                 name={
-                                    focused ? "ios-bookmarks" : "ios-bookmarks"
+                                    focused
+                                        ? "ios-card-sharp"
+                                        : "ios-card-sharp"
                                 }
                                 size={size}
                                 color={color}
@@ -52,8 +54,8 @@ function Tabs() {
                         );
                     } else if (route.name === "Add Deck") {
                         return (
-                            <FontAwesome
-                                name={"plus-square"}
+                            <MaterialCommunityIcons
+                                name="card-plus"
                                 size={size}
                                 color={color}
                             />
@@ -64,6 +66,7 @@ function Tabs() {
             tabBarOptions={{
                 activeTintColor: orange,
                 inactiveTintColor: "gray",
+                labelStyle: { fontSize: 12, fontWeight:'bold'},
             }}
         >
             <Tab.Screen name="Decks" component={DeckList} />
