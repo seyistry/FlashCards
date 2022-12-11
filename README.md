@@ -34,7 +34,6 @@ This will open Expo Developer Tools in the browser.  You can then do one of the 
     - [iOS Simulator Setup](https://docs.expo.io/workflow/ios-simulator/)
     - [Android Emulator Setup](https://docs.expo.io/workflow/android-studio-emulator/)
 }
-```
 
   
 ## Author
